@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-    class Libro
+    class Book
     {
     private:
         int Code;
@@ -11,11 +11,11 @@ using namespace std;
 
 
     public:
-        Libro(int ,string , string, int,string);
+        Book(int ,string , string, int,string);
 
     };
     
-    Libro::Libro(int _Code=0,string _Title="", string _Author="", int _Amount=0,string _keyWord="")
+    Book:Book(int _Code=0,string _Title="", string _Author="", int _Amount=0,string _keyWord="")
     {
         Code=_Code;
         Title=_Title="";
