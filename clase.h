@@ -29,7 +29,7 @@ class Book
         void SetAuthor(); 
         void SetAmount(); 
     };
-    
+    //Constructor
     Book::Book(int _Code=0,string _Title="", string _Author="", int _Amount=0)
     {
         Code=_Code;
@@ -38,7 +38,7 @@ class Book
         Amount=_Amount;
         
     }
-
+    // Method getter of Keywords
     vector<string> Book::getKeywords()
     {
         return keyWords;
@@ -60,33 +60,34 @@ class Book
     int Book::getAmount(){
         return Amount;
     }
-    
+
+   //Setter of Code
     void Book::SetCode(){
         int _Code;
         cin>>_Code;
         Code=_Code;
 
     }
-
+   //Setter of Title
     void Book::SetTitle(){
         string _Title;
         getline(cin,_Title);
         Title=_Title;
     }
-
+   //Setter of Author
     void Book::SetAuthor(){
         string _Author;
         getline(cin,_Author);
         Author=_Author;
     }
-
+   //Setter of Amount
     void Book::SetAmount(){
         int _Amount;
         cin>>_Amount;
         Code=_Amount;
     }
 
-
+//Overload of operator >>
 istream &operator>>(istream &input,Book& B){
     cout<<"Enter Book's Code: ";
     cin>>B.Code;
@@ -112,10 +113,9 @@ istream &operator>>(istream &input,Book& B){
         B.keyWords.push_back(word);
     }
     
-    
-return input;   
+    return input;   
 }
-
+//Overload of operator <<
 ostream &operator<<(ostream &output,Book& B){
     
     output<<"The Book's Code is:"<<B.Code<<'\n';
