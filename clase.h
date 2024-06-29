@@ -105,7 +105,7 @@ istream &operator>>(istream &input,Book& B){
         cin>>words;
         }
     while (words>3);
-
+B.keywords.clear;
     for (int i = 0; i < words; i++)
     {   fflush(stdin);
         string word;
