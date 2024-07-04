@@ -5,6 +5,7 @@ class Book
         string Title;
         string Author;
         int Amount;
+        int inLoan;
         vector<string>keyWords;
 
 
@@ -16,6 +17,7 @@ class Book
         string getTitle();
         string getAuthor();
         int getAmount();
+        int getinLoan();
         vector<string>getKeywords();
         
 
@@ -27,7 +29,10 @@ class Book
         void SetCode(); 
         void SetTitle(); 
         void SetAuthor(); 
-        void SetAmount(); 
+        void SetAmount();
+        void SetinLoan();
+        void SetAmount(const int& _Amount);
+        void SetinLoan(const int& _inLoan);
     };
     //Constructor
     Book::Book(int _Code=0,string _Title="", string _Author="", int _Amount=0)
@@ -60,6 +65,10 @@ class Book
     int Book::getAmount(){
         return Amount;
     }
+  //Method getter of inLoan
+    int Book::getinLoan(){
+    	return inLoan;
+	}
 
    //Setter of Code
     void Book::SetCode(){
@@ -84,8 +93,23 @@ class Book
     void Book::SetAmount(){
         int _Amount;
         cin>>_Amount;
-        Code=_Amount;
+        Amount=_Amount;
     }
+    //Setter of inLoan
+    void Book::SetinLoan(){
+        int _inLoan;
+        cin>>_inLoan;
+        inLoan=_inLoan;
+    }
+  //Overload of method SetAmount    
+    void Book::SetAmount(const int& _Amount){
+		Amount = _Amount;
+	}
+
+  //Overload of method inLoan
+	void Book::SetinLoan(const int& _inLoan){
+		inLoan = _inLoan;
+	}
 
 //Overload of operator >>
 istream &operator>>(istream &input,Book& B){
@@ -105,7 +129,9 @@ istream &operator>>(istream &input,Book& B){
         cin>>words;
         }
     while (words>3);
-B.keyWords.clear();
+    
+    B.keyWords.clear();
+    
     for (int i = 0; i < words; i++)
     {   fflush(stdin);
         string word;
