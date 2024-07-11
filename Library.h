@@ -46,7 +46,7 @@ class Library{
           * Description: Create the book has insert with that dates. Then if the library is empty insert the book at the end. Else 
 		  				 insert the book in the right place.
         */
-		void Insert(const int& _code, const string& _author, const string& _title, const int& _amount);
+		void Insert(const int& _code, const string& _title, const string& _author, const int& _amount);
 		
 		// Method to show the books into the libary
         /*
