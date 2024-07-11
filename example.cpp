@@ -14,7 +14,7 @@ int main(){
 	
 	a.Insert(b1);
 	a.Insert(b3);
-	a.Insert(4, "Deitel", "How to Program", 4);
+	a.Insert(4, "How to Program", "Deitel", 4);
 	a.Insert(b2);
 	
 	a.Remove("XD", "asd");
