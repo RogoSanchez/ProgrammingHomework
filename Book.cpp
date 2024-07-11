@@ -4,12 +4,13 @@ using namespace std;
 #include"Book.h"
 
 //Constructor
-    Book::Book(int _Code=0,string _Title="", string _Author="", int _Amount=0)
+    Book::Book(int _Code=0,string _Title="", string _Author="", int _Amount=0,vector<string>&_Keywords)
     {
         Code=_Code;
         Title=_Title;
         Author=_Author;
         Amount=_Amount;
+        keyWords=_Keywords;
         
     }
     // Method getter of Keywords
