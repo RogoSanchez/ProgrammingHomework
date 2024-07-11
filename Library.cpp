@@ -49,8 +49,8 @@ void Library::Insert(Book book){
 }
 
 // Overload of the method to insert a book into the libary with the data of the book.
-void Library::Insert(const int& _code, const string& _author, const string& _title, const int& _amount){
-	Book book(_code, _author, _title, _amount);
+void Library::Insert(const int& _code, const string& _title, const string& _author, const int& _amount){
+	Book book(_code, _title, _author, _amount);
 	
 	size_t siz = books.size();
 	
