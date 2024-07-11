@@ -14,7 +14,7 @@ class Book
 
 
     public:
-        Book(int ,string , string, int);
+        Book(int ,string , string, int, vector<string>&);
 
         //Getters
         int getCode(); 
