@@ -4,14 +4,20 @@ using namespace std;
 #include"Book.h"
 
 //Constructor
-    Book::Book(int _Code=0,string _Title="", string _Author="", int _Amount=0,vector<string>&_Keywords)
+    Book::Book(int _Code=0,string _Title="", string _Author="", int _Amount=0)
     {
         Code=_Code;
-        Title=_Title;
-        Author=_Author;
-        Amount=_Amount;
-        keyWords=_Keywords;
-        
+        for(int i=0; i<_Title.size(); i++){
+        	_Title[i] = toupper(_Title[i]);	
+		}
+        for(int i=0; i<_Author.size(); i++){
+        	_Author[i] = toupper(_Author[i]);	
+		}
+		
+		Title = _Title;
+		Author = _Author;
+		
+		Amount=_Amount;
     }
     // Method getter of Keywords
     vector<string> Book::getKeywords()
@@ -51,12 +57,22 @@ using namespace std;
     void Book::SetTitle(){
         string _Title;
         getline(cin,_Title);
+        
+        for(int i=0; i<_Title.size(); i++){
+        	_Title[i] = toupper(_Title[i]);	
+		}
+		
         Title=_Title;
     }
    //Setter of Author
     void Book::SetAuthor(){
         string _Author;
         getline(cin,_Author);
+        
+        for(int i=0; i<_Author.size(); i++){
+        	_Author[i] = toupper(_Author[i]);	
+		}
+		
         Author=_Author;
     }
    //Setter of Amount
@@ -109,13 +125,20 @@ istream &operator>>(istream &input,Book& B){
         B.keyWords.push_back(word);
     }
     
+    for(int i=0; i<B.Title.size(); i++){
+        B.Title[i] = toupper(B.Title[i]);	
+	}
+	for(int i=0; i<B.Author.size(); i++){
+    	B.Author[i] = toupper(B.Author[i]);	
+	}
+    
     return input;   
 }
 //Overload of operator <<
 ostream &operator<<(ostream &output,Book& B){
     
     output<<"The Book's Code is:"<<B.Code<<'\n';
-    output<<"The Book' s Title is:"<<B.Title<<'\n';
+    output<<"The Book's Title is:"<<B.Title<<'\n';
     output<<"The Book's Author is:"<<B.Author<<'\n';
     output<<"The Book's Amount:"<<B.Amount<<'\n';
     output<<"Keywords:"<<'\n';
