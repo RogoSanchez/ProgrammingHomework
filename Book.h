@@ -14,7 +14,7 @@ class Book
 
 
     public:
-        Book(int ,string , string, int, vector<string>&);
+        Book(int ,string , string, int);
 
         //Getters
         int getCode(); 
@@ -35,9 +35,9 @@ class Book
         void SetAuthor(); 
         void SetAmount();
         void SetinLoan();
+        void SetKeywords(const string& key1, const string& key2, const string& key3);
         void SetAmount(const int& _Amount);
         void SetinLoan(const int& _inLoan);
     };
     
 #endif
-
