@@ -39,10 +39,12 @@ class Library{
 		  * \param _title [in] The book title
 		  * \param _author [in] The book author
 		  * \param _amount [in] The book amount
-          * \usage: l1.Insert(1, "title", "author", 5);
+		  * \param key1 [in] A Keyword
+		  * \param key2 [in] A Keyword
+		  * \param key3 [in] A Keyword
           * Create the book has insert with that dates. Then if the library is empty insert the book at the end. Else insert the book in the right place.
         */
-		void Insert(const int& _code, const string& _title, const string& _author, const int& _amount);
+		void Insert(const int& _code, const string& _title, const string& _author, const int& _amount, const string& key1, const string& key2, const string& key3);
 		
 		//! Method to show the books into the libary
         /*!
