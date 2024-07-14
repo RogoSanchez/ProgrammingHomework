@@ -16,7 +16,6 @@ using namespace std;
 		
 		Title = _Title;
 		Author = _Author;
-		
 		Amount=_Amount;
     }
     // Method getter of Keywords
@@ -87,6 +86,13 @@ using namespace std;
         cin>>_inLoan;
         inLoan=_inLoan;
     }
+    
+    void Book::SetKeywords(const string& key1 = "", const string& key2 = "", const string& key3 = ""){
+        if(key1 != "") keyWords.push_back(key1);
+    	if(key2 != "") keyWords.push_back(key2);
+    	if(key3 != "") keyWords.push_back(key3);
+	}
+    
   //Overload of method SetAmount    
     void Book::SetAmount(const int& _Amount){
 		Amount = _Amount;
@@ -134,6 +140,7 @@ istream &operator>>(istream &input,Book& B){
     
     return input;   
 }
+
 //Overload of operator <<
 ostream &operator<<(ostream &output,Book& B){
     
