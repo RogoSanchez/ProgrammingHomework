@@ -61,7 +61,7 @@ class Library{
           * If the library is empty show an error mesangge. Else iterate whitin the library searching a book with that data, if the book is found then it 
 		    is deleted, else show an error messange.
         */
-		void Remove(const string& _title, const string& _author);
+		void Remove(string& _title, string& _author);
 		
 		//! Method to show all books into the library by a specific author
         /*
@@ -70,7 +70,7 @@ class Library{
           * If the library is empty or do not exist into the library any book by that author show an error mesangge. Else iterate whitin the library and 
 		    prints the data of the author's books.
         */
-		void ShowBooks(const string& _author);
+		void ShowBooks(string& _author);
 		
 		//! Method to find a book into the library by its code and return its data
         /*!
@@ -90,7 +90,7 @@ class Library{
           * If the library is empty or do not exist into the library any book with that data show an error mesangge. Once found, if the amount minus the 
 		    loan mount is greater than 3, then is lent.
         */
-		void Lend(const string& _title, const string& _author);
+		void Lend(string& _title, string& _author);
 		
 		//! Method to show all books into the library with a keyword
         /*!
