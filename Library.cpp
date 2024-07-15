@@ -213,15 +213,28 @@ void Library::Remove(const string& _title, const string& _author){
 	cout<<"Couldn't find the book to remove\n";
 }
 
-// Method to show all books into the library by a specific author
-void Library::ShowBooks(const string& _author){
+/*!
+   * \brief Method to show all books into the library by a specific author
+   * \author    Yoan Gonzalez Perdomo
+   * \version   1.0
+   * \date      2024-07-09
+   * \param _author [in] The book author
+   * \return  none
+   * \pre none
+   * \usage: l1.ShowBooks("author");
+   * If the library is empty or do not exist into the library any book by that author show an error mesangge. Else iterate whitin the library and 
+	 prints the data of the author's books.
+  */
+  void Library::ShowBooks(const string& _author){
 	size_t siz= books.size();
 	
+	//If is the library is empty just show a message
 	if(siz == 0) {
 		cout<<"The library is empty\n";
 		return;
 	}
 	
+	//Else iterate within the library and show all books by the author
 	cout<<"The books by "<<_author<<" are: \n";
 	for(int i=0; i<siz; i++){
 		if(_author == books[i].getAuthor()){
@@ -233,55 +246,74 @@ void Library::ShowBooks(const string& _author){
 		}
 	}
 	
+	//If do not exists any book of that actor show a massage
 	cout<<"There aren't any book of that author\n";
 }
 
 /*!
-   * \brief Method to delete a book from the library, having the title and the author of the book
+   * \brief Method to find a book into the library by its code and return its data
    * \author    Yoan Gonzalez Perdomo
    * \version   1.0
    * \date      2024-07-09
-   * \param _title [in] The book title
-   * \param _author [in] The book author
-   * \return  none
+   * \param _code [in] The book code
+   * \return The searchered book
    * \pre none
-   * \usage: l1.Remove("title", "author");
-   * If the library is empty show an error mesangge. Else iterate trought the library searching a book with that data, if the book is found then it 
-	 is deleted, else show an error messange.
+   * usage: l1.FindBook(2);
+   * If the library is empty or do not exist into the library any book with that code show an error mesangge. Else iterate whitin the library and 
+	 return the book whit that code
   */
 Book Library::FindBook(const int& _code){
 	size_t siz= books.size();
 	
+	//If is the library is empty just show a message
 	if(siz == 0) {
 		cout<<"The library is empty\n";
 		return 0;
 	}
 	
+	//Else iterate within the library and show the book with that code
 	for(int i=0; i<siz; i++){
 		if(books[i].getCode() == _code) return books[i];
 	}
 	
+	//If do not exists any book with that code just show a massage
 	cout<<"Couldn't find any book with that code\n";
 	return 0;
 }
 
-// Method to lend a book of the library
+/*!
+   * \brief Method to lend a book of the library
+   * \author    Yoan Gonzalez Perdomo
+   * \version   1.0
+   * \date      2024-07-09
+   * \param _title [in] The book title
+   * \param _author [in] The book author
+   * \return none
+   * \pre amount - inLoan >= 3
+   * usage: l1.Lend("title", "author");
+   * If the library is empty or do not exist into the library any book with that data show an error mesangge. Once found, if the amount minus the 
+	 loan mount is greater than 3, then is lent.
+  */
 void Library::Lend(const string& _title, const string& _author){
 	size_t siz= books.size();
 	
+	//If is the library is empty just show a message
 	if(siz == 0) {
 		cout<<"The library is empty\n";
 		return;
 	}
 	
+	//Else iterate within the library
 	for(int i=0; i<siz; i++){
 		if(books[i].getTitle() == _title && books[i].getAuthor() == _author){
+			//If exists a book with the data and the amount minus the loan amount is less than 3, then the book is loan
 			if(books[i].getAmount() - books[i].getinLoan() >= 3){
 				books[i].SetAmount(books[i].getAmount()-1);
 				books[i].SetinLoan(books[i].getinLoan()+1);
 				cout<<"The loan was completed successfully\n";
 				return;
 			}
+			//Else show a massage
 			else{
 				cout<<"It is not possible to lend that book\n";
 				return;
@@ -292,16 +324,30 @@ void Library::Lend(const string& _title, const string& _author){
 	cout<<"Couldn't find the book to lend\n";
 }
 
-// Method to show all books into the library with a keyword
+/*!
+   * \brief Method to show all books into the library with a keyword
+   * \author    Yoan Gonzalez Perdomo
+   * \version   1.0
+   * \date      2024-07-09
+   * \param _keyword (string) - a keyword
+   * \return none
+   * \pre none 
+   * \usage: l1.ShowKey("keyword");
+   * If the library is empty or do not exist into the library any book with that keyword show an error mesangge. Else iterate whitin the library and
+	 return the books whit that keyword.
+  */
 void Library::ShowKey(string _keyword){
+	//The library size is saved and create a flag
 	size_t siz= books.size();
 	bool flag = false;
 	
+	//If is the library is empty just show a message
 	if(siz == 0) {
 		cout<<"The library is empty\n";
 		return;
 	}
 	
+	//Else iterate within the library and show all books with that keyword
 	cout<<"The books whit that keyword are: \n";
 	for(int i=0; i<siz; i++){
 		for(int j = 0; j < books[i].getKeywords().size(); j++){
@@ -313,5 +359,6 @@ void Library::ShowKey(string _keyword){
 		}
 	}
 	
+	//If do not exists any book with that keyword just show a massage
 	if(flag == false) cout<<"Couldn't find any book with that keyword\n";
 }
