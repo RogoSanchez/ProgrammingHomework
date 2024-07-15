@@ -18,7 +18,7 @@ int main (){
     int Option=10;
     while (Option!=0)
     {   
-        cout<<" ----------------------------GOOD MORNING PEOPLE, WELCOME TO OUR LIBRARY APP----------------------------------\n";
+        cout<<"\n ----------------------------GOOD MORNING PEOPLE, WELCOME TO OUR LIBRARY APP----------------------------------\n";
         cout<<"--------------------------------------------------------------------------------------------------------------\n";
         cout<<"----> To insert a book ------->           Press #1\n";
         cout<<"----> To inform lost---------->           Press #2\n";
@@ -36,6 +36,7 @@ int main (){
         if (Option==1)
         {   Book Insertar;
             cin>>Insertar;
+            system("cls");
             Nacional.Insert(Insertar);
         }
         if (Option==2)
@@ -46,6 +47,7 @@ int main (){
             getline(cin,Title);
             cout<<"Provide us an Author :\n";
             getline(cin,Author);
+            system("cls");
             Nacional.Remove(Title, Author);
         }
         if(Option==5){
@@ -53,12 +55,14 @@ int main (){
             fflush(stdin);
             cout<<"Provide us an Author :\n";
             getline(cin,Author);
+            system("cls");
             Nacional.ShowBooks(Author);
         }
         if(Option==4){
             int Code;
             cout<<"Provide us a Code :\n";
             cin>>Code;
+            system("cls");
             Nacional.FindBook(Code);
         }
         if (Option==3)
@@ -69,6 +73,7 @@ int main (){
             getline(cin,Title);
             cout<<"Provide us an Author :\n";
             getline(cin,Author);
+            system("cls");
             Nacional.Lend(Title,Author);
         }
         if (Option==6)
@@ -77,7 +82,8 @@ int main (){
             fflush(stdin);
             cout<<"Provide us a Keyword :\n";
             getline(cin,Keyword);
-            //Nacional.ShowKey(Keyword);
+            system("cls");
+            Nacional.ShowKey(Keyword);
         }
         
         
