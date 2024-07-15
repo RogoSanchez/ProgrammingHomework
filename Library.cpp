@@ -38,14 +38,25 @@ Library::Library(const vector<Book>& vec){
   */
   void Library::Insert(Book book){
 	//If the amount is less than 1 then it is not inserted
-	if(book.getAmount() < 1) return;
-	
+	if(book.getAmount() < 1){
+		cout<<"It is not possible insert that book because the amount is less than 1\n";
+		return;
+	}	
 	//The size of the library is saved
 	size_t siz= books.size();
+	
+	//Check to see if already exists a book with that code or title and author name
+	for(int i=0; i<siz; i++){
+		if(books[i].getCode() == book.getCode() || books[i].getTitle() == book.getTitle() && books[i].getTitle() == book.getTitle()){
+			cout<<"It is not possible insert the book because already exists a book with that code or title and author name\n";
+			return;
+		}
+	}
 	
 	//If the library is empty, just insert the book at the end
 	if(siz == 0){
 		books.push_back(book);
+		cout<<"The book has been inserted successfully\n";
 		return;
 	}
 	//Else iterate the library searching the right place to the libarary 
@@ -61,24 +72,28 @@ Library::Library(const vector<Book>& vec){
 				//If the title of the book is minor than one in the library, then it is inserted before the book
 				if(book.getTitle() < books[j].getTitle()){
 					books.insert(books.begin()+j, book);
+					cout<<"The book has been inserted successfully\n";
 					return;
 				}
 			}
 			
 			//If the book is not minor than none then it is inserted after all author's books
 			books.insert(books.begin()+j, book);
+			cout<<"The book has been inserted successfully\n";
 			return;
 		}
 		
 		//If the book's author is minor than one in the library the it is inserted before the book
 		if(book.getAuthor() < books[i].getAuthor()){
 			books.insert(books.begin()+i, book);
+			cout<<"The book has been inserted successfully\n";
 			return;
 		}
 	}
 	
 	//In case the book is not minor or equal to any in the library then it is inserted after all books
 	books.push_back(book);
+	cout<<"The book has been inserted successfully\n";
 }
 
 /*!
@@ -100,7 +115,10 @@ Library::Library(const vector<Book>& vec){
   */
 void Library::Insert(const int& _code = 0, const string& _title = "", const string& _author = "", const int& _amount= 0, const string& key1 = "", const string& key2 = "", const string& key3 = ""){
 	//If the amount is less than 1 then it is not inserted
-	if(_amount < 1) return;
+	if(_amount < 1){
+		cout<<"It is not possible insert that book because the amount is less than 1\n";
+		return;
+	}
 	
 	//We make a book with the data of the parametrers
 	Book book(_code, _title, _author, _amount);
@@ -110,9 +128,18 @@ void Library::Insert(const int& _code = 0, const string& _title = "", const stri
 	//The size of the library is saved
 	size_t siz = books.size();
 	
+	//Check to see if already exists a book with that code or title and author name
+	for(int i=0; i<siz; i++){
+		if(books[i].getCode() == book.getCode() || books[i].getTitle() == book.getTitle() && books[i].getTitle() == book.getTitle()){
+			cout<<"It is not possible insert the book because already exists a book with that code or title and author name\n";
+			return;
+		}
+	}
+	
 	//If the library is empty, just insert the book at the end
 	if(siz == 0){
 		books.push_back(book);
+		cout<<"The book has been inserted successfully\n";
 		return;
 	}
 	//Else iterate the library searching the right place to the libarary 
@@ -128,24 +155,28 @@ void Library::Insert(const int& _code = 0, const string& _title = "", const stri
 				//If the title of the book is minor than one in the library, then it is inserted before the book
 				if(book.getTitle() < books[j].getTitle()){
 					books.insert(books.begin()+j, book);
+					cout<<"The book has been inserted successfully\n";
 					return;
 				}
 			}
 			
 			//If the book is not minor than none then it is inserted after all author's books
 			books.insert(books.begin()+j, book);
+			cout<<"The book has been inserted successfully\n";
 			return;
 		}
 		
 		//If the book's author is minor than one in the library the it is inserted before the boo
 		if(book.getAuthor() < books[i].getAuthor()){
 			books.insert(books.begin()+i, book);
+			cout<<"The book has been inserted successfully\n";
 			return;
 		}
 	}
 	
 	//In case the book is not minor or equal to any in the library then it is inserted after all books
 	books.push_back(book);
+	cout<<"The book has been inserted successfully\n";
 }
 
 /*!
@@ -188,8 +219,16 @@ void Library::Show(){
    * If the library is empty show an error mesangge. Else iterate trought the library searching a book with that data, if the book is found then it 
 	 is deleted, else show an error messange.
   */
-void Library::Remove(const string& _title, const string& _author){
+void Library::Remove(string& _title, string& _author){
 	size_t siz= books.size();
+	
+	//Convert to uppercase the title and the author name
+	for(int i=0; i<_author.size(); i++){
+    	_author[i] = toupper(_author[i]);	
+	}
+	for(int i=0; i<_title.size(); i++){
+    	_title[i] = toupper(_title[i]);	
+	}
 	
 	//If is the library is empty just show a message
 	if(siz == 0) {
@@ -197,7 +236,6 @@ void Library::Remove(const string& _title, const string& _author){
 		return;
 	}
 	
-	//Else iterate trought the library
 	for(int i=0; i<siz; i++){
 		//If exists one book with that data then less in one the amount
 		if(books[i].getTitle() == _title && books[i].getAuthor() == _author){
@@ -206,6 +244,7 @@ void Library::Remove(const string& _title, const string& _author){
 			//If amount reach 0 then the book it is deleted
 			if(books[i].getAmount() == 0) books.erase(books.begin() + i);
 			
+			cout<<"The book has been reported successfully\n";
 			return;
 		}
 	}
@@ -225,8 +264,13 @@ void Library::Remove(const string& _title, const string& _author){
    * If the library is empty or do not exist into the library any book by that author show an error mesangge. Else iterate whitin the library and 
 	 prints the data of the author's books.
   */
-  void Library::ShowBooks(const string& _author){
+  void Library::ShowBooks(string& _author){
 	size_t siz= books.size();
+	
+	//Convert to uppercase the author name
+	for(int i=0; i<_author.size(); i++){
+    	_author[i] = toupper(_author[i]);	
+	}
 	
 	//If is the library is empty just show a message
 	if(siz == 0) {
@@ -273,7 +317,10 @@ Book Library::FindBook(const int& _code){
 	
 	//Else iterate within the library and show the book with that code
 	for(int i=0; i<siz; i++){
-		if(books[i].getCode() == _code) return books[i];
+		if(books[i].getCode() == _code){
+			cout<<"The book has been found successfully\n";
+			return books[i];
+		}
 	}
 	
 	//If do not exists any book with that code just show a massage
@@ -294,8 +341,16 @@ Book Library::FindBook(const int& _code){
    * If the library is empty or do not exist into the library any book with that data show an error mesangge. Once found, if the amount minus the 
 	 loan mount is greater than 3, then is lent.
   */
-void Library::Lend(const string& _title, const string& _author){
+void Library::Lend(string& _title, string& _author){
 	size_t siz= books.size();
+	
+	//Convert to uppercase the title and the author name
+	for(int i=0; i<_author.size(); i++){
+    	_author[i] = toupper(_author[i]);	
+	}
+	for(int i=0; i<_title.size(); i++){
+    	_title[i] = toupper(_title[i]);	
+	}
 	
 	//If is the library is empty just show a message
 	if(siz == 0) {
