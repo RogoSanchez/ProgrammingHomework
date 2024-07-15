@@ -76,7 +76,7 @@ class Library{
         /*!
           * \param _code [in] The book code
 	      * usage: l1.FindBook(2);
-	      * return\ The searchered book
+	      * \return The searchered book
           * If the library is empty or do not exist into the library any book with that code show an error mesangge. Else iterate whitin the library and 
 		    return the book whit that code
         */
